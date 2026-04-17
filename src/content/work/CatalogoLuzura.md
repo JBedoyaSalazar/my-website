@@ -67,14 +67,14 @@ Todas las decisiones de color están centralizadas en la declaración `:root`. C
 
 ```css
 :root {
-  --gold:        #C9A96E;   /* Dorado institucional — acentos y etiquetas */
-  --gold-light:  #E8D5A3;   /* Dorado suave — subtítulos en portada */
-  --cream:       #FAF8F4;   /* Fondo general de la página */
-  --ink:         #1A1714;   /* Negro cálido — tipografía principal y portada */
-  --muted:       #7A7068;   /* Gris cálido — descripciones secundarias */
-  --line:        #E2DDD6;   /* Línea divisora — bordes sutiles */
-  --white:       #FFFFFF;   /* Fondo de tarjetas */
-  --section-gap: 100px;     /* Espaciado vertical entre secciones */
+  --gold: #c9a96e; /* Dorado institucional — acentos y etiquetas */
+  --gold-light: #e8d5a3; /* Dorado suave — subtítulos en portada */
+  --cream: #faf8f4; /* Fondo general de la página */
+  --ink: #1a1714; /* Negro cálido — tipografía principal y portada */
+  --muted: #7a7068; /* Gris cálido — descripciones secundarias */
+  --line: #e2ddd6; /* Línea divisora — bordes sutiles */
+  --white: #ffffff; /* Fondo de tarjetas */
+  --section-gap: 100px; /* Espaciado vertical entre secciones */
 }
 ```
 
@@ -82,13 +82,16 @@ Todas las decisiones de color están centralizadas en la declaración `:root`. C
 
 Se cargan dos familias desde **Google Fonts**:
 
-| Variable de uso | Fuente | Peso | Aplicación |
-|---|---|---|---|
+| Variable de uso   | Fuente               | Peso               | Aplicación                                               |
+| ----------------- | -------------------- | ------------------ | -------------------------------------------------------- |
 | Display / Títulos | `Cormorant Garamond` | 300, 400, 500, 600 | Nombre de marca, títulos de sección, nombres de producto |
-| Cuerpo / UI | `Jost` | 200, 300, 400, 500 | Navegación, etiquetas, descripciones, texto general |
+| Cuerpo / UI       | `Jost`               | 200, 300, 400, 500 | Navegación, etiquetas, descripciones, texto general      |
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 ---
@@ -130,12 +133,12 @@ Barra sticky que aparece al hacer scroll pasada la portada.
 
 **Links de ancla** (scroll suave vía `scroll-behavior: smooth` en `html`):
 
-| Texto | Ancla destino |
-|---|---|
-| Batas Fem. | `#batas-femeninas` |
+| Texto       | Ancla destino       |
+| ----------- | ------------------- |
+| Batas Fem.  | `#batas-femeninas`  |
 | Batas Masc. | `#batas-masculinas` |
-| Pijamas | `#pijamas` |
-| Accesorios | `#accesorios` |
+| Pijamas     | `#pijamas`          |
+| Accesorios  | `#accesorios`       |
 
 ---
 
@@ -197,11 +200,11 @@ Componente central del catálogo. Estructura interna:
 
 **Interacciones:**
 
-| Evento | Efecto |
-|---|---|
-| Hover en card | `translateY(-4px)` + sombra profunda |
+| Evento          | Efecto                               |
+| --------------- | ------------------------------------ |
+| Hover en card   | `translateY(-4px)` + sombra profunda |
 | Hover en imagen | `scale(1.04)` con `transition: 0.6s` |
-| Hover en card | Overlay oscuro con opacidad 0→1 |
+| Hover en card   | Overlay oscuro con opacidad 0→1      |
 
 **Variante panorámica** (`.product-card.panoramic`):
 
@@ -234,8 +237,14 @@ Separador visual entre secciones. Compuesto por:
 
 ```css
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 ```
 
@@ -244,13 +253,16 @@ Separador visual entre secciones. Compuesto por:
 Todo elemento con clase `.anim-in` comienza invisible (`opacity: 0; transform: translateY(20px)`). Cuando el viewport lo alcanza, se agrega la clase `.visible` que activa la transición CSS.
 
 ```javascript
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+);
 ```
 
 **Efecto escalonado (stagger):** cada elemento recibe un `transition-delay` basado en su posición en el grupo:
@@ -266,51 +278,51 @@ el.style.transitionDelay = `${(i % 4) * 80}ms`;
 
 ### Sección 01 — Batas Femeninas
 
-| ID | Nombre | Descripción Visual | Tipo de Card |
-|---|---|---|---|
-| `bata-carolina` | Bata Carolina | Menta, cierre dorado, cuello mao, hombros abullonados | Estándar (featured) |
-| `bata-joseane` | Bata Joseane | Blanca, espalda cruzada, botón dorado, solapa elegante | Estándar (featured) |
-| `bata-paola` | Bata Paola | Blanca, botones dorados, semi-entallada, cuello solapa | Estándar (featured) |
-| `3-batas-fem` | Colección Batas Femeninas | Rosa/blancas, 3 modelos en una imagen | Panorámica |
+| ID              | Nombre                    | Descripción Visual                                     | Tipo de Card        |
+| --------------- | ------------------------- | ------------------------------------------------------ | ------------------- |
+| `bata-carolina` | Bata Carolina             | Menta, cierre dorado, cuello mao, hombros abullonados  | Estándar (featured) |
+| `bata-joseane`  | Bata Joseane              | Blanca, espalda cruzada, botón dorado, solapa elegante | Estándar (featured) |
+| `bata-paola`    | Bata Paola                | Blanca, botones dorados, semi-entallada, cuello solapa | Estándar (featured) |
+| `3-batas-fem`   | Colección Batas Femeninas | Rosa/blancas, 3 modelos en una imagen                  | Panorámica          |
 
 ### Sección 02 — Batas Masculinas
 
-| ID | Nombre | Descripción Visual | Tipo de Card |
-|---|---|---|---|
-| `bata-masculina` | Bata Masculina Bicolor | Negro + azul marino, cierre, cuello mao, mangas raglan | Panorámica |
+| ID               | Nombre                 | Descripción Visual                                     | Tipo de Card |
+| ---------------- | ---------------------- | ------------------------------------------------------ | ------------ |
+| `bata-masculina` | Bata Masculina Bicolor | Negro + azul marino, cierre, cuello mao, mangas raglan | Panorámica   |
 
 ### Sección 03 — Pijamas Clínicos
 
-| ID | Nombre | Descripción Visual | Tipo de Card |
-|---|---|---|---|
-| `pijama-basica` | Pijama Básica | Azul marino unisex, V-neck, pantalón cargo recto | Estándar |
-| `pijama-azul` | Pijama Azul Acero | Azul pizarra, top V + detalles dorados, jogger con cordón | Estándar |
-| `pijama-burdeos` | Pijama Burdeos | Rojo burdeos, hombros abullonados, cierre dorado, slim-fit | Estándar |
-| `pijama-terracota` | Pijama Terracota | Terracota/salmón, V-zip, solapa plegada, tallas inclusivas | Estándar |
-| `set-malva` | Set Básico Malva | Malva rosado, pijama + bata blanca + bata corta | Panorámica |
+| ID                 | Nombre            | Descripción Visual                                         | Tipo de Card |
+| ------------------ | ----------------- | ---------------------------------------------------------- | ------------ |
+| `pijama-basica`    | Pijama Básica     | Azul marino unisex, V-neck, pantalón cargo recto           | Estándar     |
+| `pijama-azul`      | Pijama Azul Acero | Azul pizarra, top V + detalles dorados, jogger con cordón  | Estándar     |
+| `pijama-burdeos`   | Pijama Burdeos    | Rojo burdeos, hombros abullonados, cierre dorado, slim-fit | Estándar     |
+| `pijama-terracota` | Pijama Terracota  | Terracota/salmón, V-zip, solapa plegada, tallas inclusivas | Estándar     |
+| `set-malva`        | Set Básico Malva  | Malva rosado, pijama + bata blanca + bata corta            | Panorámica   |
 
 ### Sección 04 — Accesorios
 
-| ID | Nombre | Descripción Visual | Tipo de Card |
-|---|---|---|---|
+| ID      | Nombre           | Descripción Visual                                          | Tipo de Card          |
+| ------- | ---------------- | ----------------------------------------------------------- | --------------------- |
 | `gorro` | Gorro Quirúrgico | Azul marino, lazos ajustables, bordado dorado personalizado | Estándar (aspect 4/3) |
 
 ---
 
 ## 📐 Responsive Breakpoints
 
-| Breakpoint | Comportamiento |
-|---|---|
-| `> 768px` | Layout completo: nav con links, grillas multicol, cards panorámicas |
-| `≤ 768px` | Nav sin links, grillas a 1 col, cards panorámicas se vuelven simples, footer en columna |
-| `≤ 480px` | Marco decorativo de portada oculto |
+| Breakpoint | Comportamiento                                                                          |
+| ---------- | --------------------------------------------------------------------------------------- |
+| `> 768px`  | Layout completo: nav con links, grillas multicol, cards panorámicas                     |
+| `≤ 768px`  | Nav sin links, grillas a 1 col, cards panorámicas se vuelven simples, footer en columna |
+| `≤ 480px`  | Marco decorativo de portada oculto                                                      |
 
 ---
 
 ## 🔗 Dependencias Externas
 
-| Recurso | URL | Propósito |
-|---|---|---|
+| Recurso      | URL                    | Propósito                                 |
+| ------------ | ---------------------- | ----------------------------------------- |
 | Google Fonts | `fonts.googleapis.com` | Tipografías `Cormorant Garamond` y `Jost` |
 
 **Sin dependencias de JavaScript externas.** Todo el JS es vanilla (< 15 líneas).
@@ -348,7 +360,7 @@ Cada `.product-card` puede convertirse en un componente reutilizable recibiendo 
 // React — ejemplo de componente ProductCard
 function ProductCard({ image, category, name, description, badge, panoramic }) {
   return (
-    <div className={`product-card ${panoramic ? 'panoramic' : ''}`}>
+    <div className={`product-card ${panoramic ? "panoramic" : ""}`}>
       <div className="card-image-wrap">
         <img src={image} alt={name} />
         {badge && <span className="card-badge">{badge}</span>}
@@ -402,15 +414,15 @@ Estructura recomendada para conectar el catálogo a un backend:
 
 ### Personalización futura recomendada
 
-| Feature | Implementación sugerida |
-|---|---|
-| Filtrado por categoría | JS: toggle de clases `hidden` en tarjetas |
-| Búsqueda de productos | JS: filter sobre array de productos en JSON |
+| Feature                          | Implementación sugerida                              |
+| -------------------------------- | ---------------------------------------------------- |
+| Filtrado por categoría           | JS: toggle de clases `hidden` en tarjetas            |
+| Búsqueda de productos            | JS: filter sobre array de productos en JSON          |
 | Galería de imágenes por producto | Modal con múltiples vistas (frontal/lateral/detalle) |
-| Formulario de cotización | Form HTML + integración con WhatsApp API o email |
-| Multiidioma | i18n con objeto de traducciones en JS |
-| Precios dinámicos | Conexión a API REST con autenticación |
-| Carrito de pedido | Estado local con `localStorage` o Redux |
+| Formulario de cotización         | Form HTML + integración con WhatsApp API o email     |
+| Multiidioma                      | i18n con objeto de traducciones en JS                |
+| Precios dinámicos                | Conexión a API REST con autenticación                |
+| Carrito de pedido                | Estado local con `localStorage` o Redux              |
 
 ---
 
@@ -422,9 +434,9 @@ Editar las variables en `:root` dentro del `<style>`:
 
 ```css
 :root {
-  --gold: #C9A96E;   /* ← Cambiar por el color dorado deseado */
-  --ink: #1A1714;    /* ← Cambiar por el color oscuro principal */
-  --cream: #FAF8F4;  /* ← Cambiar por el fondo general */
+  --gold: #c9a96e; /* ← Cambiar por el color dorado deseado */
+  --ink: #1a1714; /* ← Cambiar por el color oscuro principal */
+  --cream: #faf8f4; /* ← Cambiar por el fondo general */
 }
 ```
 
@@ -435,8 +447,10 @@ Copiar el bloque de tarjeta dentro del `<div class="product-grid">` correspondie
 ```html
 <div class="product-card anim-in">
   <div class="card-image-wrap">
-    <img src="ruta/a/imagen.png" alt="Nombre del producto">
-    <div class="card-overlay"><span class="card-overlay-text">Vista Completa</span></div>
+    <img src="ruta/a/imagen.png" alt="Nombre del producto" />
+    <div class="card-overlay">
+      <span class="card-overlay-text">Vista Completa</span>
+    </div>
     <!-- Opcional: -->
     <div class="card-badge">Nuevo</div>
   </div>
@@ -464,7 +478,7 @@ Copiar el bloque de tarjeta dentro del `<div class="product-grid">` correspondie
     <div class="section-number">05</div>
     <div class="section-info">
       <p class="section-label">Subcategoría</p>
-      <h2 class="section-title">Nombre de<br>Categoría</h2>
+      <h2 class="section-title">Nombre de<br />Categoría</h2>
     </div>
   </div>
   <div class="product-grid">
@@ -483,13 +497,13 @@ Agregar también el link en la navegación:
 
 ## 🧪 Compatibilidad
 
-| Navegador | Soporte |
-|---|---|
-| Chrome 90+ | ✅ Completo |
-| Firefox 88+ | ✅ Completo |
-| Safari 14+ | ✅ Completo |
-| Edge 90+ | ✅ Completo |
-| IE 11 | ❌ No soportado (`grid`, `clamp()`, `backdrop-filter`) |
+| Navegador   | Soporte                                                |
+| ----------- | ------------------------------------------------------ |
+| Chrome 90+  | ✅ Completo                                            |
+| Firefox 88+ | ✅ Completo                                            |
+| Safari 14+  | ✅ Completo                                            |
+| Edge 90+    | ✅ Completo                                            |
+| IE 11       | ❌ No soportado (`grid`, `clamp()`, `backdrop-filter`) |
 
 **Características CSS modernas utilizadas:**
 
@@ -515,11 +529,11 @@ Agregar también el link en la navegación:
 
 ## 👤 Autoría y Contexto
 
-| Campo | Valor |
-|---|---|
-| Marca | Dotaciones Luzura |
-| Tipo de proyecto | Catálogo institucional digital |
-| Tecnología | HTML5 + CSS3 + Vanilla JS |
-| Versión | 1.0.0 |
-| Idioma | Español |
+| Campo            | Valor                                     |
+| ---------------- | ----------------------------------------- |
+| Marca            | Dotaciones Luzura                         |
+| Tipo de proyecto | Catálogo institucional digital            |
+| Tecnología       | HTML5 + CSS3 + Vanilla JS                 |
+| Versión          | 1.0.0                                     |
+| Idioma           | Español                                   |
 | Propósito futuro | Integración con ecommerce / tienda online |

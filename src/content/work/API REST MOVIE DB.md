@@ -34,20 +34,23 @@ Una aplicación de películas minimalista y responsiva construida con **Vanilla 
 ## 🔧 Instalación y Configuración
 
 1. **Clonar el repositorio:**
+
    ```bash
    git clone https://github.com/JBedoyaSalazar/API-REST-JAVASCRIPT-PRACTICO.git
    cd API-REST-JAVASCRIPT-PRACTICO
    ```
 
 2. **Instalar dependencias:**
+
    ```bash
    npm install
    ```
 
 3. **Configurar la API Key:**
    Crea un archivo llamado `secrets.js` dentro de la carpeta `src/` y añade tu API Key de TMDB:
+
    ```javascript
-   const API_KEY = 'TU_API_KEY_AQUÍ';
+   const API_KEY = "TU_API_KEY_AQUÍ";
    ```
 
 4. **Ejecutar el proyecto:**
@@ -55,7 +58,7 @@ Una aplicación de películas minimalista y responsiva construida con **Vanilla 
    ```bash
    npm run dev
    ```
-   Luego, abre el archivo `index.html` en tu navegador (puedes usar extensiones como *Live Server*).
+   Luego, abre el archivo `index.html` en tu navegador (puedes usar extensiones como _Live Server_).
 
 ## 📂 Estructura del Proyecto
 
@@ -78,4 +81,5 @@ Una aplicación de películas minimalista y responsiva construida con **Vanilla 
 Hecho con ❤️ por **Jefred Bedoya** - [GitHub](https://github.com/JBedoyaSalazar)
 
 ---
-*Este proyecto fue desarrollado con propósitos educativos.*
+
+_Este proyecto fue desarrollado con propósitos educativos._

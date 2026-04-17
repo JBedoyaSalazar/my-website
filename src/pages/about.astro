@@ -1,129 +1,153 @@
 ---
-import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Image from "astro/components/Image.astro";
+import portraitImage from "../images/portrait.png";
 ---
 
 <BaseLayout title="About | Jefred Bedoya" description="About Jefred Bedoya">
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/portrait.png"
-					alt="Jefred in front of a mirror"
-				/>
-			</Hero>
+  <div class="stack gap-20">
+    <main class="wrapper about">
+      <Hero
+        title="About"
+        tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+      >
+        <Image
+          width="1553"
+          height="873"
+          src={portraitImage}
+          alt="Jefred in front of a mirror"
+          format="webp"
+          decoding="async"
+          loading="lazy"
+        />
+      </Hero>
 
-			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
-					<p>
-						I am a Software Engineering student with a strong foundation in programming and problem-solving, focused on building efficient, scalable, and well-structured systems. My approach to development emphasizes clarity, maintainability, and performance, ensuring that every solution I create is both technically sound and aligned with real-world requirements.
-					</p>
-					<hr>
-					<p>
-						I have experience working with modern development technologies, particularly in frontend and full-stack environments, where I apply structured design principles and clean architecture practices. I am comfortable analyzing complex problems and translating them into logical, well-documented implementations, always aiming to deliver solutions that are both functional and elegant.
-					</p>
-					<hr>
-					<p>
-						Currently, I am developing a personal expense management application using React, which is still in progress. This project reflects my interest in creating practical tools that solve everyday problems while allowing me to deepen my understanding of state management, user experience, and scalable frontend architectures.
-					</p>
-					<hr>
-					<p>
-						Looking ahead, I am driven by the goal of contributing to innovative technological solutions, continuously improving my technical skills, and staying aligned with emerging trends in software engineering. I value precision, adaptability, and continuous learning as core elements of my professional growth.
-					</p>
-				</div>
-			</section>
-			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p>Software Engineering at 'Fundacion Universitaria Maria Cano - Medellin'.</p>
-				</div>
-			</section>
-			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
-					<ul>
-						<li>Java</li>
-						<li>Data Structures</li>
-						<li>JavaScript</li>
-						<li>Data Bases</li>
-					</ul>
-				</div>
-			</section>
-		</main>
+      <section>
+        <h2 class="section-title">Background</h2>
+        <div class="content">
+          <p>
+            I am a Software Engineering student with a strong foundation in
+            programming and problem-solving, focused on building efficient,
+            scalable, and well-structured systems. My approach to development
+            emphasizes clarity, maintainability, and performance, ensuring that
+            every solution I create is both technically sound and aligned with
+            real-world requirements.
+          </p>
+          <hr />
+          <p>
+            I have experience working with modern development technologies,
+            particularly in frontend and full-stack environments, where I apply
+            structured design principles and clean architecture practices. I am
+            comfortable analyzing complex problems and translating them into
+            logical, well-documented implementations, always aiming to deliver
+            solutions that are both functional and elegant.
+          </p>
+          <hr />
+          <p>
+            Currently, I am developing a personal expense management application
+            using React, which is still in progress. This project reflects my
+            interest in creating practical tools that solve everyday problems
+            while allowing me to deepen my understanding of state management,
+            user experience, and scalable frontend architectures.
+          </p>
+          <hr />
+          <p>
+            Looking ahead, I am driven by the goal of contributing to innovative
+            technological solutions, continuously improving my technical skills,
+            and staying aligned with emerging trends in software engineering. I
+            value precision, adaptability, and continuous learning as core
+            elements of my professional growth.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Education</h2>
+        <div class="content">
+          <p>
+            Software Engineering at 'Fundacion Universitaria Maria Cano -
+            Medellin'.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Skills</h2>
+        <div class="content">
+          <ul>
+            <li>Java</li>
+            <li>Data Structures</li>
+            <li>JavaScript</li>
+            <li>Data Bases</li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
-		<ContactCTA />
-	</div>
+    <ContactCTA />
+  </div>
 </BaseLayout>
 
 <style>
-	.about {
-		display: flex;
-		flex-direction: column;
-		gap: 3.5rem;
-	}
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
 
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
+  img {
+    margin-top: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
 
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
-	}
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--gray-200);
+  }
 
-	hr{
-		color: rgba(139, 133, 133, 0.773);
-		opacity: 0.2;
-		margin: 8px 0;
-	}
+  hr {
+    color: rgba(139, 133, 133, 0.773);
+    opacity: 0.2;
+    margin: 8px 0;
+  }
 
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
-	}
+  .section-title {
+    grid-column-start: 1;
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+  }
 
-	.content {
-		grid-column: 2 / 4;
-	}
+  .content {
+    grid-column: 2 / 4;
+  }
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
-	}
+  .content :global(a) {
+    text-decoration: 1px solid underline transparent;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--theme-transition);
+  }
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
-	}
+  .content :global(a:hover),
+  .content :global(a:focus) {
+    text-decoration-color: currentColor;
+  }
 
-	
+  @media (min-width: 50em) {
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 60% 1fr;
+    }
 
-	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
-		}
+    .about > :global(:first-child) {
+      grid-column-start: 2;
+    }
 
-		.about > :global(:first-child) {
-			grid-column-start: 2;
-		}
-
-		section {
-			display: contents;
-			font-size: var(--text-lg);
-		}
-	}
+    section {
+      display: contents;
+      font-size: var(--text-lg);
+    }
+  }
 </style>
