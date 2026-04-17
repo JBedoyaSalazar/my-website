@@ -9,7 +9,7 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
-import Pill from '../components/Pill.astro';
+import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Skills from "../components/Skills.astro";
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
@@ -41,7 +41,9 @@ const projects = (await getCollection("work"))
         </Hero>
 
         <Image
-          alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"width="480"height="620"
+          alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
+          width="480"
+          height="620"
           src={portraitImage}
           format="webp"
           decoding="async"
@@ -90,7 +92,7 @@ const projects = (await getCollection("work"))
 <style>
   .hero {
     display: flex;
- flex-direction: column;
+    flex-direction: column;
     align-items: center;
     gap: 2rem;
   }
@@ -100,11 +102,9 @@ const projects = (await getCollection("work"))
   }
 
   .hero img {
-        aspect-ratio: 5 / 4;
+    aspect-ratio: 5 / 4;
     object-fit: cover;
-    
-    
-    
+
     object-position: top;
     border-radius: 1.5rem;
     box-shadow: var(--shadow-md);
